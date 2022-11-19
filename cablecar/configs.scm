@@ -50,6 +50,7 @@
 
 
 (define* %base-features
+  (append
   (list
     (feature-custom-services
      #:system-services
@@ -149,6 +150,11 @@
                      ;; (effect-blur . 7x5)
                      (clock)))
     )
+   %emacs-features
+))
+
+(define* %emacs-features (list
+
    (feature-emacs-appearance
     #:extra-elisp
     `((setq modus-themes-syntax '(faint))
@@ -200,4 +206,4 @@
     #:templates `(fundamental-mode
                   ,#~""
                   (t (format-time-string "%Y-%m-%d"))))
-   )
+                          ))
