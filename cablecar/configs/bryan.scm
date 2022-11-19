@@ -55,5 +55,5 @@
         ;;                             '("https://yhetil.org/guix-patches/1"))))
         (feature-keyboard
          #:keyboard-layout
-         (keyboard-layout "us"
+         (keyboard-layout "us,qwerty"
                           #:options '("ctrl:nocaps")))))
