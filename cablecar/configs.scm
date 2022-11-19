@@ -151,12 +151,7 @@
                      ;; (effect-blur . 7x5)
                      (clock)))
     )
-   (feature-emacs-appearance
-    #:extra-elisp
-    `((setq modus-themes-syntax '(faint))
-      ;; (setq modus-themes-region '(bg-only))
-      ;; (setq modus-themes-paren-match '(underline))
-      (setq modus-themes-org-blocks 'tinted-background)))
+   (feature-emacs-appearance)
    (feature-emacs-faces)
    (feature-emacs-tramp)
    (feature-emacs-completion
