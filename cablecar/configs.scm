@@ -48,6 +48,60 @@
   #:use-module (cablecar configs)
   #:export (%base-features))
 
+(define* %emacs-features (list
+
+   (feature-emacs-appearance
+    #:extra-elisp
+    `((setq modus-themes-syntax '(faint))
+      ;; (setq modus-themes-region '(bg-only))
+      ;; (setq modus-themes-paren-match '(underline))
+      (setq modus-themes-org-blocks 'tinted-background)))
+   (feature-emacs-faces)
+   (feature-emacs-tramp)
+   (feature-emacs-completion
+    #:mini-frame? #f
+    #:marginalia-align 'right)
+
+   (feature-emacs-corfu
+    #:corfu-doc-auto #f)
+   (feature-emacs-vertico)
+   (feature-emacs-project)
+   (feature-emacs-perspective)
+   (feature-emacs-input-methods)
+   (feature-emacs-which-key)
+   (feature-emacs-keycast #:turn-on? #f)
+
+   (feature-emacs-dired)
+   (feature-emacs-eshell)
+   (feature-emacs-monocle)
+   (feature-emacs-pdf-tools)
+   (feature-emacs-nov-el)
+
+   ;; TODO: Revisit <https://en.wikipedia.org/wiki/Git-annex>
+   (feature-emacs-git
+    #:project-directory "~/src")
+   ;; TODO: <https://www.labri.fr/perso/nrougier/GTD/index.html#table-of-contents>
+   (feature-emacs-org
+    #:org-directory "~/docs"
+    #:org-indent? #f
+    #:org-capture-templates
+    `(("t" "Todo" entry (file+headline "" "Tasks") ;; org-default-notes-file
+       "* TODO %?\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t)))
+   (feature-emacs-org-roam
+    ;; TODO: Rewrite to states
+    #:org-roam-directory "~/docs/notes")
+   (feature-emacs-org-agenda
+    #:org-agenda-files '("~/docs/todo.org"))
+   (feature-emacs-smartparens
+    #:show-smartparens? #t)
+   (feature-emacs-geiser)
+   (feature-emacs-guix)
+   (feature-emacs-tempel
+    #:default-templates? #t
+    #:templates `(fundamental-mode
+                  ,#~""
+                  (t (format-time-string "%Y-%m-%d"))))
+                          ))
 
 (define* %base-features
   (append
@@ -153,57 +207,3 @@
    %emacs-features
 ))
 
-(define* %emacs-features (list
-
-   (feature-emacs-appearance
-    #:extra-elisp
-    `((setq modus-themes-syntax '(faint))
-      ;; (setq modus-themes-region '(bg-only))
-      ;; (setq modus-themes-paren-match '(underline))
-      (setq modus-themes-org-blocks 'tinted-background)))
-   (feature-emacs-faces)
-   (feature-emacs-tramp)
-   (feature-emacs-completion
-    #:mini-frame? #f
-    #:marginalia-align 'right)
-
-   (feature-emacs-corfu
-    #:corfu-doc-auto #f)
-   (feature-emacs-vertico)
-   (feature-emacs-project)
-   (feature-emacs-perspective)
-   (feature-emacs-input-methods)
-   (feature-emacs-which-key)
-   (feature-emacs-keycast #:turn-on? #f)
-
-   (feature-emacs-dired)
-   (feature-emacs-eshell)
-   (feature-emacs-monocle)
-   (feature-emacs-pdf-tools)
-   (feature-emacs-nov-el)
-
-   ;; TODO: Revisit <https://en.wikipedia.org/wiki/Git-annex>
-   (feature-emacs-git
-    #:project-directory "~/src")
-   ;; TODO: <https://www.labri.fr/perso/nrougier/GTD/index.html#table-of-contents>
-   (feature-emacs-org
-    #:org-directory "~/docs"
-    #:org-indent? #f
-    #:org-capture-templates
-    `(("t" "Todo" entry (file+headline "" "Tasks") ;; org-default-notes-file
-       "* TODO %?\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t)))
-   (feature-emacs-org-roam
-    ;; TODO: Rewrite to states
-    #:org-roam-directory "~/docs/notes")
-   (feature-emacs-org-agenda
-    #:org-agenda-files '("~/docs/todo.org"))
-   (feature-emacs-smartparens
-    #:show-smartparens? #t)
-   (feature-emacs-geiser)
-   (feature-emacs-guix)
-   (feature-emacs-tempel
-    #:default-templates? #t
-    #:templates `(fundamental-mode
-                  ,#~""
-                  (t (format-time-string "%Y-%m-%d"))))
-                          ))
