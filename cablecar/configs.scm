@@ -102,7 +102,26 @@
     #:templates `(fundamental-mode
                   ,#~""
                   (t (format-time-string "%Y-%m-%d"))))
-                          ))
+   (feature-emacs
+    #:default-application-launcher? #t
+    #:additional-elisp-packages
+    (append
+     (list emacs-dirvish)
+     (strings->packages
+      "emacs-elfeed" "emacs-hl-todo"
+      "emacs-yasnippet"
+      ;; "emacs-company"
+      "emacs-consult-dir"
+      ;; "emacs-all-the-icons-completion" "emacs-all-the-icons-dired"
+      "emacs-kind-icon"
+      "emacs-nginx-mode" "emacs-yaml-mode"
+      ;; "emacs-lispy"
+      "emacs-ytdl"
+      "emacs-multitran"
+      "emacs-minimap"
+      "emacs-ement"
+      "emacs-restart-emacs"
+      "emacs-org-present")))))
 
 (define* %base-features
   (append
@@ -115,7 +134,7 @@
 
     (feature-base-services)
     (feature-desktop-services)
-    (feature-docker)
+    ;; (feature-docker)
     (feature-pipewire)
     (feature-fonts
      #:font-monospace (font "Iosevka" #:size 18 #:weight 'regular)
