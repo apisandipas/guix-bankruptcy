@@ -151,7 +151,7 @@
                      ;; (effect-blur . 7x5)
                      (clock)))
     )
-   (feature-emacs-appearance)
+   ;; (feature-emacs-appearance)
    (feature-emacs-faces)
    (feature-emacs-tramp)
    (feature-emacs-completion
