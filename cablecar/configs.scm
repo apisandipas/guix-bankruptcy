@@ -14,7 +14,6 @@
   #:use-module (rde features shellutils)
   #:use-module (rde features ssh)
   #:use-module (rde features emacs)
-  #:use-module (rde features emacs-xyz)
   #:use-module (rde features linux)
   #:use-module (rde features bittorrent)
   #:use-module (rde features docker)
@@ -46,13 +45,12 @@
   #:use-module (nongnu system linux-initrd)
   #:use-module (ice-9 match)
   #:use-module (cablecar configs)
-  #:use-module (cablecar utils)
+  #:use-module (cablecar configs)
   #:export (%base-features))
 
 
 (define* %base-features
-  (append
-   list
+  (list
     (feature-custom-services
      #:system-services
      (list
@@ -150,7 +148,13 @@
     #:extra-config '(;; (screenshots)
                      ;; (effect-blur . 7x5)
                      (clock)))
-   (feature-emacs-appearance)
+    )
+   (feature-emacs-appearance
+    #:extra-elisp
+    `((setq modus-themes-syntax '(faint))
+      ;; (setq modus-themes-region '(bg-only))
+      ;; (setq modus-themes-paren-match '(underline))
+      (setq modus-themes-org-blocks 'tinted-background)))
    (feature-emacs-faces)
    (feature-emacs-tramp)
    (feature-emacs-completion
@@ -196,24 +200,4 @@
     #:templates `(fundamental-mode
                   ,#~""
                   (t (format-time-string "%Y-%m-%d"))))
-
-   (feature-emacs
-    #:default-application-launcher? #t
-    #:additional-elisp-packages
-    (append
-     (list emacs-dirvish)
-     (strings->packages
-      "emacs-elfeed" "emacs-hl-todo"
-      "emacs-yasnippet"
-      ;; "emacs-company"
-      "emacs-consult-dir"
-      ;; "emacs-all-the-icons-completion" "emacs-all-the-icons-dired"
-      "emacs-kind-icon"
-      "emacs-nginx-mode" "emacs-yaml-mode"
-      ;; "emacs-lispy"
-      "emacs-ytdl"
-      "emacs-multitran"
-      "emacs-minimap"
-      "emacs-ement"
-      "emacs-restart-emacs"
-      "emacs-org-present")))))
+   )
