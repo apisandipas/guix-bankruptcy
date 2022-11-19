@@ -44,7 +44,7 @@
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd)
   #:use-module (ice-9 match)
-  #:use-module (cablecar configs)
+  #:use-module (cablecar utils)
   #:use-module (cablecar configs)
   #:export (%base-features))
 
