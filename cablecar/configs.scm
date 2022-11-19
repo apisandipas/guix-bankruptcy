@@ -149,9 +149,8 @@
     ;; The blur on lock screen is not privacy-friendly.
     #:extra-config '(;; (screenshots)
                      ;; (effect-blur . 7x5)
-                     (clock)))
-    )
-   ;; (feature-emacs-appearance)
+                     (clock))))
+   (feature-emacs-appearance)
    (feature-emacs-faces)
    (feature-emacs-tramp)
    (feature-emacs-completion
