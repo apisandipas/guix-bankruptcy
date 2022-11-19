@@ -126,11 +126,11 @@
 (define* %base-features
   (append
   (list
-    (feature-custom-services
-     #:system-services
-     (list
-      ;;(service mate-desktop-service-type)
-      (service sddm-service-type)))
+    ;; (feature-custom-services
+    ;;  #:system-services
+    ;;  (list
+    ;;   ;;(service mate-desktop-service-type)
+    ;;   (service sddm-service-type)))
 
     (feature-base-services)
     (feature-desktop-services)
