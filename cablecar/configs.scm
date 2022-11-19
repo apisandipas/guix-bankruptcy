@@ -52,7 +52,7 @@
 
 (define* %base-features
   (append
-   (list
+   list
     (feature-custom-services
      #:system-services
      (list
@@ -149,7 +149,7 @@
     ;; The blur on lock screen is not privacy-friendly.
     #:extra-config '(;; (screenshots)
                      ;; (effect-blur . 7x5)
-                     (clock))))
+                     (clock)))
    (feature-emacs-appearance)
    (feature-emacs-faces)
    (feature-emacs-tramp)
@@ -216,5 +216,4 @@
       "emacs-minimap"
       "emacs-ement"
       "emacs-restart-emacs"
-      "emacs-org-present")))
-   ))
+      "emacs-org-present")))))
